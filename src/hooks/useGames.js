@@ -1,11 +1,13 @@
 import useData from "./useData";
 
 const useGames = (selectedGenre) => {
-  return selectedGenre == null
-    ? useData("/games")
-    : useData("/games", { params: { genres: [selectedGenre.id] } }, [
-        selectedGenre.id,
-      ]);
+  return useData(
+    "/games",
+    {
+      params: { genres: selectedGenre === null ? null : selectedGenre.id },
+    },
+    selectedGenre === null ? [null] : [selectedGenre.id]
+  );
 };
 
 export default useGames;
