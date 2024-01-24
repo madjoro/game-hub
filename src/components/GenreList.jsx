@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import getCroppedImageUrl from "../services/image-url";
 
-const GenreList = ({ onSelectGenre }) => {
+const GenreList = ({ onSelectGenre, selectedGenre }) => {
   const { data, loading, error } = useGenres();
 
   if (error) return null;
@@ -26,6 +26,13 @@ const GenreList = ({ onSelectGenre }) => {
               src={getCroppedImageUrl(g.image_background)}
             ></Image>
             <Button
+              fontWeight={
+                selectedGenre === null
+                  ? "normal"
+                  : g.id === selectedGenre.id
+                  ? "bold"
+                  : "normal"
+              }
               onClick={() => onSelectGenre(g)}
               variant="link"
               fontSize={"lg"}
