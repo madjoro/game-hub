@@ -1,7 +1,11 @@
 import useData from "./useData";
 
-const useGames = () => {
-  return useData("/games");
+const useGames = (selectedGenre) => {
+  return selectedGenre == null
+    ? useData("/games")
+    : useData("/games", { params: { genres: [selectedGenre.id] } }, [
+        selectedGenre.id,
+      ]);
 };
 
 export default useGames;
