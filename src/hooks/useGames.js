@@ -7,11 +7,13 @@ const useGames = (gameQuery) => {
       params: {
         genres: gameQuery.genre === null ? null : gameQuery.genre.id,
         platforms: gameQuery.platform === null ? null : gameQuery.platform.id,
+        ordering: gameQuery.sortOrder,
       },
     },
     [
       gameQuery.genre === null ? null : gameQuery.genre.id,
       gameQuery.platform === null ? null : gameQuery.platform.id,
+      gameQuery.sortOrder,
     ]
   );
 };
