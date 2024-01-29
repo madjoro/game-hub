@@ -1,17 +1,17 @@
 import useData from "./useData";
 
-const useGames = (selectedGenre, selectedPlatform) => {
+const useGames = (gameQuery) => {
   return useData(
     "/games",
     {
       params: {
-        genres: selectedGenre === null ? null : selectedGenre.id,
-        platforms: selectedPlatform === null ? null : selectedPlatform.id,
+        genres: gameQuery.genre === null ? null : gameQuery.genre.id,
+        platforms: gameQuery.platform === null ? null : gameQuery.platform.id,
       },
     },
     [
-      selectedGenre === null ? null : selectedGenre.id,
-      selectedPlatform === null ? null : selectedPlatform.id,
+      gameQuery.genre === null ? null : gameQuery.genre.id,
+      gameQuery.platform === null ? null : gameQuery.platform.id,
     ]
   );
 };
